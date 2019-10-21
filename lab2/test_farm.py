@@ -39,3 +39,12 @@ class TestFarm(TestCase):
         the_iter = object4.iterating_list(stables, the_len, object4.crazy_cows)
         the_distance = object4.lowest_distance(the_iter)
         self.assertEqual(the_distance, 6)
+
+    def test_obj_5(self):
+        print("----------Testing the the case----------")
+        object4 = script.Farm(14, 10)
+        stables = [1, 5, 9, 10, 25, 29, 34, 37, 40, 49, 50, 55, 60, 63]
+        the_len = object4.average_len(stables, object4.crazy_cows, object4.boxes)
+        the_iter = object4.iterating_list(stables, the_len, object4.crazy_cows)
+        the_distance = object4.lowest_distance(the_iter)
+        self.assertEqual(the_distance, 1)

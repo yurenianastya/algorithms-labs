@@ -38,7 +38,6 @@ class Farm:
             for j in range(0, len(stables)-1, 1):  # left side loop
                 if stables[left_flag1] in crazy_cows_stable:
                     left_flag1 = left_flag1 + 1
-                    break
                 elif stables[left_flag1] - stables[left_flag] >= average_length:
                     crazy_cows_stable.append(stables[left_flag1])
                     left_flag = left_flag1
@@ -50,7 +49,6 @@ class Farm:
             for k in range(len(stables), 0, -1):  # right side loop
                 if stables[left_flag1] in crazy_cows_stable:
                     right_flag1 = right_flag1 + 1
-                    break
                 elif stables[right_flag] - stables[right_flag1] >= average_length:
                     crazy_cows_stable.append(stables[right_flag1])
                     right_flag = right_flag1
