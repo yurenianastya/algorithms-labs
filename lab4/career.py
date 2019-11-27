@@ -38,7 +38,7 @@ def career_path_algo(file):
     return positions[0][0]
 
 
-class TestAlgo(unittest.TestCase):
+class TestAlgorithm(unittest.TestCase):
 
     def test_input(self):
         self.assertEqual(career_path_algo("career_1.in"), 3)
