@@ -10,15 +10,21 @@ class ElectricChain:
     def calculate_longest_wire(self):
         wire_length = 0
         lowest_height = 1.0
+        if self.max_heights[0] > self.max_heights[1]:
+            next_pillar_should_be_max = True
+        else:
+            next_pillar_should_be_max = False
         min_wire_len = self.hypotenuse(lowest_height, lowest_height)
-        for pillar in range(len(self.max_heights) - 1):
+        for pillar in range(len(self.max_heights)-1):
             # calculate when both have max heights
             guess_max_to_max = self.hypotenuse(self.max_heights[pillar], self.max_heights[pillar+1])
             # calculate when one has min height
-            if self.max_heights[pillar] > self.max_heights[pillar+1]:
+            if next_pillar_should_be_max is True:
                 guess_min_to_max = self.hypotenuse(self.max_heights[pillar], lowest_height)
+                next_pillar_should_be_max = False
             else:
                 guess_min_to_max = self.hypotenuse(lowest_height, self.max_heights[pillar+1])
+                next_pillar_should_be_max = True
             # now find which option is the biggest
             longest_wire_chunk = max(min_wire_len, guess_max_to_max, guess_min_to_max)
             wire_length += longest_wire_chunk
@@ -30,7 +36,8 @@ class ElectricChain:
 
 def main():
     chain = ElectricChain(4, [100, 2, 10, 2, 100])
-    print(chain.calculate_longest_wire())
+    answer = chain.calculate_longest_wire()
+    print(round(answer, 2))
 
 
 class TestAlgorithm(unittest.TestCase):
@@ -51,5 +58,6 @@ class TestAlgorithm(unittest.TestCase):
         self.assertEqual(round(answer, 2), 396.32)
 
 
+print(main())
 unittest.main()
-main()
+
